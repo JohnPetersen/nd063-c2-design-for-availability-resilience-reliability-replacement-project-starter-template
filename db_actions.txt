@@ -1,0 +1,27 @@
+--- Connect to EC2 Host
+ssh -i project/project-1-primary.pem ec2-user@18.234.99.32
+
+ssh -i project/project-1-secondary.pem ec2-user@54.218.73.172
+
+--- Install mysql
+sudo yum -y install mysql
+
+--- Connect to DB
+mysql -u admin -p -h database-1.cacxlf6usttc.us-east-1.rds.amazonaws.com
+
+mysql -u admin -p -h database-1-read-replica.c1xd5f2vjltv.us-west-2.rds.amazonaws.com
+
+--- Switch Databases
+USE udacity
+SHOW DATABASES;
+
+--- Create a Table
+SHOW TABLES;
+CREATE TABLE notes(note_id INT NOT NULL AUTO_INCREMENT, note_text VARCHAR(1000) NOT NULL, PRIMARY KEY (note_id));
+
+--- Insert Data
+INSERT INTO notes (note_text) VALUES ("This is a test note!");
+INSERT INTO notes (note_text) VALUES ("This is another test note!");
+
+--- Read Data
+SELECT * FROM notes;

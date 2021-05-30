@@ -1,0 +1,55 @@
+[ec2-user@ip-10-2-10-184 ~]$ mysql -u admin -p -h database-1.cacxlf6usttc.us-east-1.rds.amazonaws.com
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 26
+Server version: 8.0.20 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> USE udacity
+Database changed
+MySQL [udacity]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| udacity            |
++--------------------+
+4 rows in set (0.00 sec)
+
+MySQL [udacity]> SHOW TABLES;
+Empty set (0.00 sec)
+
+MySQL [udacity]> CREATE TABLE notes(note_id INT NOT NULL AUTO_INCREMENT, note_text VARCHAR(1000) NOT NULL, PRIMARY KEY (note_id));
+Query OK, 0 rows affected (0.05 sec)
+
+MySQL [udacity]> SHOW TABLES;
++-------------------+
+| Tables_in_udacity |
++-------------------+
+| notes             |
++-------------------+
+1 row in set (0.00 sec)
+
+MySQL [udacity]> INSERT INTO notes (note_text) VALUES ("This is a test note!");
+Query OK, 1 row affected (0.01 sec)
+
+MySQL [udacity]> INSERT INTO notes (note_text) VALUES ("This is another test note!");
+Query OK, 1 row affected (0.01 sec)
+
+MySQL [udacity]> SELECT * FROM notes;
++---------+----------------------------+
+| note_id | note_text                  |
++---------+----------------------------+
+|       1 | This is a test note!       |
+|       2 | This is another test note! |
++---------+----------------------------+
+2 rows in set (0.01 sec)
+
+MySQL [udacity]> exit
+Bye
+[ec2-user@ip-10-2-10-184 ~]$ 

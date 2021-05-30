@@ -1,0 +1,3 @@
+The minimum Recovery Time Objective (RTO) for a single AZ outage is 60 seconds. This is possible because RDS automatically fails over to the standby instance in another availability zone in the region. The minimum RTO for a region outage is longer as it requires manual intervention to recover using the read replica. An RTO of 15 minutes is achievable with on duty operations staff.
+
+The minimum Recovery Point Objective (RPO) for a single AZ outage is zero seconds. The is possible because RDS syncronusly replicates data to the standby instance in the other AZ. The minimum RPO for a region outage is higher and depends on the replication lag.
